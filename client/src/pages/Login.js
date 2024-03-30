@@ -24,7 +24,7 @@ const Login = () => {
     }
   };
 
-  //prevent for login user
+  //prevent for login user it will always navigate to login user
   useEffect(() => {
     if (localStorage.getItem("user")) {
       navigate("/");

@@ -13,3 +13,10 @@
   justify-content: center;
   height: 90vh;
 }
+.filetrs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 0 0 3px gray;
+}
