@@ -3,7 +3,9 @@ import Layout from "./../components/Layout/Layout";
 import {Modal,Form,Input, Select,message, Table,DatePicker} from "antd"; 
 import axios from 'axios'; 
 import Spinner from "../components/Spinner";
+import Analytics from "../components/Analytics";
 import moment from "moment";
+import { UnorderedListOutlined,AreaChartOutlined } from '@ant-design/icons';
 const {RangePicker}  =DatePicker;
 const HomePage = () => {
     const [showModal,setShowModal]=useState(false);
@@ -11,6 +13,8 @@ const HomePage = () => {
   const [allTransection, setAllTransection]=useState([]);
   const [frequency,setFrequency]=useState('7');
   const [selectedDate,setSelectdate]=useState([]);
+  const [type,setType]=useState('all');
+  const [viewData,setViewData]=useState('table');
 //table data
 const columns=[
   {
@@ -51,6 +55,7 @@ const columns=[
             userid: user._id,
             frequency,
             selectedDate,
+            type,
           });
           setLoading(false);
           setAllTransection(res.data);
@@ -61,7 +66,7 @@ const columns=[
         }
       };
      getAllTransaction();
-    },[frequency,selectedDate])
+    },[frequency,selectedDate,type])
   const handlesubmit = async (values) => {
     try {
      const user=JSON.parse(localStorage.getItem('user'))
@@ -92,11 +97,30 @@ const columns=[
             value={selectedDate}
             onChange={(values)=>
             setSelectdate(values)}
-            />  
+            />   
           )}
           </div>
-            <div>
-                <button className="btn btn-primary"
+          <div>
+            <h6>Select Type</h6>
+            <Select value={type} onChange={(values) => setType(values)}>
+              <Select.Option value="all">all</Select.Option>
+              <Select.Option value="expense">Expense</Select.Option>
+              <Select.Option value="income">Income</Select.Option>
+           </Select>
+           
+          </div>
+          <div className="switch-icons">
+            <UnorderedListOutlined 
+            className={`mx-2 ${viewData==='table'?"active-icon":"inactive-icon" }`}
+            onClick={()=>setViewData("table")} 
+            />
+            <AreaChartOutlined 
+              className={`mx-2 ${viewData === 'analytics' ? "active-icon" : "inactive-icon" }`}  
+            onClick={()=>setViewData("analytics")}
+             />
+          </div>
+           <div>
+              <button className="btn btn-primary"
                 onClick={()=>{
                     setShowModal(true);
                 }}
@@ -104,25 +128,29 @@ const columns=[
             </div>
             </div>
             <div className="content">
-            <Table columns={columns} dataSource={allTransection}/>
+          {viewData === 'table' ? 
+            <Table columns={columns} dataSource={allTransection} /> 
+            : <Analytics allTransection={allTransection}l/>
+          }
+            
             </div>
             <Modal title="Add transaction " open={showModal} onCancel={()=>
             setShowModal(false)}
            footer={false}
              >
  
-            <Form Layout="vertical" onFinish={handlesubmit}>
-             <Form.Item label="Amount" name="amount">
-                <Input type="text"/>    
-             </Form.Item>
-             <Form.Item label="type" name="type">
-             <Select>
+          <Form layout="vertical" onFinish={handlesubmit}>
+            <Form.Item label="Amount" name="amount">
+              <Input type="text" />
+            </Form.Item>
+            <Form.Item label="Type" name="type">
+              <Select>
                 <Select.Option value="income">Income</Select.Option>
-                <Select.Option value="expense">Expense</Select.Option> 
-             </Select>
-             </Form.Item>
-                    <Form.Item label="Category" name="category">
-             <Select>
+                <Select.Option value="expense">Expense</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Category" name="category">
+              <Select>
                 <Select.Option value="salary">Salary</Select.Option>
                 <Select.Option value="tip">Tip</Select.Option>
                 <Select.Option value="project">Project</Select.Option>
@@ -130,23 +158,23 @@ const columns=[
                 <Select.Option value="movie">Movie</Select.Option>
                 <Select.Option value="bills">Bills</Select.Option>
                 <Select.Option value="medical">Medical</Select.Option>
-                 <Select.Option value="fee">Fee</Select.Option>
-                <Select.Option value="tax">TAX</Select.Option>  
-             </Select>
-             </Form.Item>
-             <Form.Item label="Date" name="date">
-               <Input type="date" />
-             </Form.Item>
-             <Form.Item label="Refrence" name="refrence">
-               <Input type="text" />
-             </Form.Item>
-               <Form.Item label="Description" name="description">
-                 <Input type="text" />
-                </Form.Item>
-                <div className="d-flex justify-content-end">
-                    <button type="submit" className="btn btn-primary">{" "}SAVE</button>
-                </div>
-            </Form>
+                <Select.Option value="fee">Fee</Select.Option>
+                <Select.Option value="tax">TAX</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Date" name="date">
+              <DatePicker />
+            </Form.Item>
+            <Form.Item label="Reference" name="reference">
+              <Input type="text" />
+            </Form.Item>
+            <Form.Item label="Description" name="description">
+              <Input type="text" />
+            </Form.Item>
+            <div className="d-flex justify-content-end">
+              <button type="submit" className="btn btn-primary">SAVE</button>
+            </div>
+          </Form>
             </Modal>  
         </Layout>
     );

@@ -16,7 +16,7 @@ const getAllTransection = async (req, res) => {
     //     res.status(500).json(error);
     // }
     try {
-        const { frequency, selectedDate, type } = req.body;
+        const { frequency, selectedDate,type } = req.body;
         const transections = await transectionModel.find({
             ...(frequency !== "custom"
                 ? {
@@ -31,7 +31,7 @@ const getAllTransection = async (req, res) => {
                     },
                 }),
             userid: req.body.userid,
-           // ...(type !== "all" && { type }),
+            ...(type !== "all" && { type }),
         });
         res.status(200).json(transections);
     } catch (error) {
