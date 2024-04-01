@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
- import Spinner from "../components/Spinner";
+import Spinner from "../components/Spinner";
 const Register = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const Register = () => {
     return (
         <>
             <div className="resgister-page ">
-                {loading && <Spinner/>}
+                {loading && <Spinner />}
                 <Form layout="vertical" onFinish={submitHandler}>
                     <h1>Register Form</h1>
                     <Form.Item label="Name" name="name">
