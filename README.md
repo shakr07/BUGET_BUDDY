@@ -48,8 +48,22 @@ Budget Buddy is a full-stack web application designed to help users manage their
 1. Open the terminal.
 2. Run for frontend:
    ```sh
-   cd backend
+    cd backend
    npm i
    nodemon index.js
+
+## Image
+### Register
+![Project Logo](image/1.png)
+### Login
+![Login Image](image/2.png)
+### Expense data
+![Expense data Image](image/3.png)
+### Graph analytic
+![Graph analytic Image](image/4.png)
+### Adding
+![Adding Image](image/6.png)
+  
+
 
 
