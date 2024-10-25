@@ -1,5 +1,6 @@
 import React from "react";
 import { Progress } from "antd";
+import Predict from "./Layout/predict";
 const Analytics = ({ allTransection }) => {
     // category
     const categories = [
@@ -153,7 +154,9 @@ const Analytics = ({ allTransection }) => {
                         );
                     })}
                 </div>
+                <Predict/>
             </div>
+            
         </>
     );
 };

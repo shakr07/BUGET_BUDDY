@@ -156,18 +156,17 @@ const HomePage = () => {
           </Select>
         </div>
         <div className="switch-icons" >
-          <UnorderedListOutlined
-            className={`mx-2 ${
-              viewData === "table" ? "active-icon" : "inactive-icon"
-            }`}
-            onClick={() => setViewData("table")}
-          />
-          <AreaChartOutlined
-            className={`mx-2 ${
-              viewData === "analytics" ? "active-icon" : "inactive-icon"
-            }`}
-            onClick={() => setViewData("analytics")}
-          />
+        <UnorderedListOutlined
+    className={`mx-2 ${viewData === "table" ? "active-icon" : "inactive-icon"}`}
+    onClick={() => setViewData("table")}
+  />
+  <span className="ml-1 text-sm">View as Table</span>
+
+           <AreaChartOutlined
+    className={`mx-2 ${viewData === "analytics" ? "active-icon" : "inactive-icon"}`}
+    onClick={() => setViewData("analytics")}
+  />
+  <span className="ml-1 text-sm">View Analytics</span>
         </div>
         <div>
           <button
