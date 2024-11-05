@@ -2,6 +2,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Predict from "./components/Predict";
+import Chart from "./components/Chart";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/aesehi" element={<Predict/>} />
+        <Route path="/chart" element={<Chart/>} />
       </Routes>
     </>
   );
