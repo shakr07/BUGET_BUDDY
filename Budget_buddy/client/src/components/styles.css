@@ -1,0 +1,86 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+h1, h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Container for the charts */
+.chartContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Styling for individual chart cards */
+.dataCard {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 650px;
+    padding: 20px;
+    text-align: center;
+}
+
+.revenueCard {
+    flex: 1;
+}
+
+.customerCard {
+    flex: 1;
+}
+
+.categoryCard {
+    flex: 1;
+}
+
+/* Styling for chart titles */
+.dataCard canvas {
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.dataCard h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #3f3f3f;
+}
+
+/* Loading state */
+.loadingState {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #888;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+    .chartContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dataCard {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}

@@ -68,20 +68,45 @@ function ChartData(props) {
     }
   ];
 
- let Source= [
+  let Source = [
     {
-      "label": "Ads",
-      "value": 32
+      "label": "Salary",
+      "value": 50
     },
     {
-      "label": "Subscriptions",
-      "value": 45
+      "label": "Tip",
+      "value": 12
     },
     {
-      "label": "Sponsorships",
-      "value": 23
+      "label": "Project",
+      "value": 60
+    },
+    {
+      "label": "Food",
+      "value": 30
+    },
+    {
+      "label": "Movie",
+      "value": 15
+    },
+    {
+      "label": "Bills",
+      "value": 80
+    },
+    {
+      "label": "Medical",
+      "value": 40
+    },
+    {
+      "label": "Fee",
+      "value": 10
+    },
+    {
+      "label": "Tax",
+      "value": 20
     }
-  ]
+]
+
   
     return (
     <div>

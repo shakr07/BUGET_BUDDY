@@ -67,13 +67,13 @@ function Predict() {
   
   return (
     <div>
-      <h2>Income Data</h2>  
+      {/* <h2>Income Data</h2>   */}
       {
         
         incomeData.length >= 12 && expenseData.length >= 12 ? <ChartData incomeData={incomeData} expenseData={expenseData} start={0} />: null
       
       }
-      {
+      {/* {
         incomeData.map((value, index) => (
             <p key={index}>{value}</p> 
           ))
@@ -81,7 +81,7 @@ function Predict() {
       <h2>Expense Data</h2>
       {expenseData.map((value, index) => (
         <p key={index}>{value}</p> // Also render expense data correctly
-      ))}
+      ))} */}
     </div>
   );
 }

@@ -10,10 +10,11 @@ defaults.plugins.title.align = "start";
 defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = "black";
 
-function Chart({ revenueData = [], sourceData = [] }) {
+function Chart({ revenueData = [], sourceData = [], start }) {
     // Check if revenueData and sourceData are defined
+    console.log(revenueData, " ", sourceData);
     if (!revenueData.length || !sourceData.length) {
-        return <div>Loading data...</div>;  
+        return <div>Loading data...</div>;      
     }
 
     return (
@@ -24,14 +25,14 @@ function Chart({ revenueData = [], sourceData = [] }) {
                         labels: revenueData.map((data) => data.label),
                         datasets: [
                             {
-                                label: "Revenue",
-                                data: revenueData.map((data) => data.revenue),
+                                label: "Income",
+                                data: revenueData.map((data) => data.income),
                                 backgroundColor: "#064FF0",
                                 borderColor: "#064FF0",
                             },
                             {
-                                label: "Cost",
-                                data: revenueData.map((data) => data.cost),
+                                label: "Expense",
+                                data: revenueData.map((data) => data.Expense),
                                 backgroundColor: "#FF3030",
                                 borderColor: "#FF3030",
                             },
@@ -45,7 +46,7 @@ function Chart({ revenueData = [], sourceData = [] }) {
                         },
                         plugins: {
                             title: {
-                                text: "Monthly Revenue & Cost",
+                                text: "Monthly Income & Expense",
                             },
                         },
                     }}
