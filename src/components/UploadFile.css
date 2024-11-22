@@ -1,0 +1,38 @@
+    .upload-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .upload-form {
+        background-color: #f9f9f9;
+        padding: 5px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .file-input {
+        margin-bottom: 20px;
+        padding: 5px;
+        font-size: 12px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .submit-btn {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        padding: 6px 12px;
+        font-size: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049; /* Darker green when hovered */
+    }
