@@ -97,7 +97,7 @@ function Predict() {
       epochs: 200, // Increased epochs for better learning
       callbacks: {
         onEpochEnd: (epoch, logs) => {
-          console.log(`Epoch ${epoch + 1}: loss = ${logs.loss}`);
+         //  console.log(`Epoch ${epoch + 1}: loss = ${logs.loss}`);
         },
       },
     });
@@ -110,7 +110,7 @@ function Predict() {
       const predictedValue = prediction.dataSync()[0] * maxVal; // Rescale the prediction back
       predictions.push(predictedValue);
 
-      console.log(`Prediction for month ${nextMonth}: ${predictedValue}`);
+      //console.log(`Prediction for month ${nextMonth}: ${predictedValue}`);
     }
 
     return predictions;

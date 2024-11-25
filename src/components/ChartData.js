@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'; // Corrected useEffect and useState
+import axios from 'axios';
 import Chart from './Chart';
 
 function ChartData(props) {
-    
-   let months= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  
+    const [result,setresult]=useState(false);
+    const [sourceData, setSourceData] = useState(null); 
+   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
    const Data = [
     {
       "label": `${months[(props.start + 0) % 12]}`,
@@ -68,51 +70,29 @@ function ChartData(props) {
     }
   ];
 
-  let Source = [
-    {
-      "label": "Salary",
-      "value": 50
-    },
-    {
-      "label": "Tip",
-      "value": 12
-    },
-    {
-      "label": "Project",
-      "value": 60
-    },
-    {
-      "label": "Food",
-      "value": 30
-    },
-    {
-      "label": "Movie",
-      "value": 15
-    },
-    {
-      "label": "Bills",
-      "value": 80
-    },
-    {
-      "label": "Medical",
-      "value": 40
-    },
-    {
-      "label": "Fee",
-      "value": 10
-    },
-    {
-      "label": "Tax",
-      "value": 20
-    }
-]
 
-  
-    return (
+  const Source = {};
+
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/v1/transections/category');
+        setSourceData(response.data.data);
+        
+      } catch (error) {
+        console.error('Error fetching category data:', error.message);
+      }
+    };
+ 
+    fetchCategoryData();
+  }, []);
+
+  return (
     <div>
-      <Chart revenueData={Data} sourceData={Source}/>;
+       {sourceData && <Chart revenueData={Data} sourceData={sourceData} />}
+  
     </div>
-  )
+  );
 }
 
-export default ChartData
+export default ChartData;

@@ -11,23 +11,23 @@ defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = "black";
 
 function Chart({ revenueData = [], sourceData = [], start }) {
-    // Check if revenueData and sourceData are defined
+     
     console.log(revenueData, " ", sourceData);
     if (!revenueData.length || !sourceData.length) {
         return <div>Loading data...</div>;
     }
 
-    // Ensure positive values for revenueData (Income and Expense)
+     
     const positiveRevenueData = revenueData.map((data) => ({
         ...data,
-        income: Math.abs(data.income), // Ensure positive Income
-        Expense: Math.abs(data.Expense), // Ensure positive Expense
+        income: Math.abs(data.income),  
+        Expense: Math.abs(data.Expense),  
     }));
 
-    // Ensure positive values for sourceData (Count values)
+   
     const positiveSourceData = sourceData.map((data) => ({
         ...data,
-        value: Math.abs(data.value), // Ensure positive value for Count
+        value: Math.abs(data.value),  
     }));
 
     return (
@@ -69,7 +69,7 @@ function Chart({ revenueData = [], sourceData = [], start }) {
                 />
             </div>
 
-            {/* Revenue Source Bar Chart */}
+    
             <div className="dataCard customerCard" style={styles.card}>
                 <Bar
                     data={{
@@ -98,8 +98,7 @@ function Chart({ revenueData = [], sourceData = [], start }) {
                     width={600}
                 />
             </div>
-
-            {/* Revenue Source Doughnut Chart */}
+ 
             <div className="dataCard categoryCard" style={styles.card}>
                 <Doughnut
                     data={{
